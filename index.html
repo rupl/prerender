@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <title>Prerender: instant page loads</title>
+
+    <meta name="description" content="Prerender: instant page loads">
+    <meta name="author" content="Chris Ruppel">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/print.css" type="text/css" media="print">
+
+    <link rel="stylesheet" href="lib/github.css">
+    <link rel="stylesheet" href="lib/prism.css">
+  </head>
+
+  <body>
+
+    <div class="reveal">
+
+      <!-- Used to fade in a background when a specific slide state is reached -->
+      <div class="state-background"></div>
+
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+        <section data-state="bluesy">
+          <h1 style="font-size: 3.2em; ">Prerender</h1><br>
+          <h3>Who wants <em>instant</em> page loads?</h3>
+          <br><br><br>
+          <p>BADCamp 2013 Mobile Summit</p>
+          <script>
+            // Delicously hacky. Look away.
+            if( navigator.userAgent.match( /(iPhone|iPad|iPod|Android)/i ) ) document.write( '<p style="color: rgba(0,0,0,0.3); text-shadow: none;">('+'Tap to navigate'+')</p>' );
+          </script>
+        </section>
+
+        <section>
+          <h2>Chris Ruppel</h2>
+          <section>
+            <br><br>
+            <p>frontend dev @ <a href="http://fourkitchens.com">Four Kitchens</a></p>
+            <p><a href="http://twitter.com/rupl">twitter.com/rupl</a></p>
+            <p><a href="https://github.com/rupl">github.com/rupl</a></p>
+          </section>
+          <section>
+            <a href="http://fourkitchens.com"><img src="img/4k-logo-square-500px.png" alt="Four Kitchens" style="border: 0; box-shadow: none; "></a>
+            <br>
+            <small class="fragment"><a href="http://fourkitchens.com/careers">(we're hiring!)</a></small>
+          </section>
+          <section>
+            <br><br>
+            <h3>I contribute to open source stuff:</h3>
+            <ul class="fragment">
+              <li><a href="https://drupal.org/project/modernizr">Modernizr Drupal module</a>
+              <li><a href="http://modernizr.com">Modernizr</a>
+              <li><a href="https://github.com/fourkitchens/jekyll-schedule">jekyll-schedule</a>
+              <li><a href="https://groups.drupal.org/html5/drupal-8">Drupal 8 HTML5 Initative</a>
+              <li><a href="https://groups.drupal.org/mobile/drupal-8">Drupal 8 Mobile Initiative</a>
+            </ul>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <br>
+            <h2>The Network</h2>
+            <br><br>
+            <h3 class="fragment">Our Best friend <small class="fragment" style="position: relative; top: 8px;">(and worst enemy)</small></h3>
+          </section>
+          <section>
+            <br>
+            <h2>Latency</h2>
+            <br><br>
+            <p class="fragment">No matter what we do, the<br> speed of light always defeats us.</p>
+            <br><br>
+            <p class="fragment">One solution is to <em>intelligently guess</em><br> what the user will do next.</p>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <br>
+            <h2>Prefetching</h2>
+            <br>
+            <p class="fragment">Already codified into HTML5,<br> there is such a thing as <a href="http://www.w3.org/TR/html5/links.html#link-type-prefetch">DNS prefetching</a>.</p>
+            <br>
+            <p class="fragment">Establish TCP connections ahead of time,<br> skipping the time-consuming DNS lookup.</p>
+          </section>
+          <section>
+            <br>
+            <img src="img/timing-overview.png" alt="diagram of page load phases" style="position: relative; left: -290px; top: -240px; ">
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <br>
+            <h2>Prerender</h2>
+            <br>
+            <p class="fragment">The next level of prefetching.</p>
+            <br>
+            <p class="fragment">With prerender, browsers can fetch entire pages ahead of time, including all CSS/JS and executing them.</p>
+            <br>
+            <p class="fragment" style="font-size: 1.3em;">You end up with a fully-rendered<br> page before the user even clicks!</p>
+          </section>
+          <section>
+            <br>
+            <h2>Requesting a prerender</h2>
+            <br>
+            <p class="fragment">Chrome will prerender automatically<br> according to some strict guidelines.</p>
+            <br>
+            <p class="fragment">You can also <em>request</em> prerenders with a very basic tag:</p>
+            <br>
+            <pre class="fragment"><code class="language-javascript">      &lt;link rel="prerender" href="http://example.com/path"></code></pre>
+          </section>
+          <section>
+            <br>
+            <h2>JavaScript API</h2>
+            <br>
+            <p class="fragment">There is a <a href="http://developer.mozilla.org/en-US/docs/Web/Guide/User_experience/Using_the_Page_Visibility_API">Page Visibility API</a> in JS.</p>
+            <br>
+            <p class="fragment">Verify that the user is actually looking at a prerendered page before kicking off videos, logging analytics, etc.</p>
+          </section>
+          <section>
+            <br>
+            <h2>Test your browser</h2>
+            <br>
+            <p class="fragment">Go to <code class="language-javascript"> chrome://net-internals/#prerender </code></p>
+            <br>
+            <p class="fragment"><a href="http://prerender-test.appspot.com/">Test prerender on this simple page</a></p>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <br>
+            <h2>Examples</h2>
+            <br>
+            <p class="fragment"><a href="http://pressflow.org">Pressflow.org has FAQs prerendering</a></p>
+            <br>
+            <p class="fragment"><a href="http://google.com">Google Instant</a> uses prerender on the first result in many cases.</p>
+          </section>
+          <section>
+            <br>
+            <h2>Further reading</h2>
+            <br>
+            <ul>
+              <li class="fragment"><a href="http://chimera.labs.oreilly.com/books/1230000000545/">High-Performance Browser Networking</a></li>
+              <li class="fragment"><a href="http://www.igvita.com/posa/high-performance-networking-in-google-chrome/">Preview chapter of HPBN</a>, all about predictors</li>
+              <li class="fragment"><a href="https://developers.google.com/speed/articles/prefetching">Google webmaster guidelines about prefetching</a> </li>
+              <li class="fragment"><a href="http://fourkitchens.com/blog/2013/03/20/prerender-chrome-instant-page-loads">Prerender in Chrome for instant page loads</a></li>
+            </ul>
+          </section>
+        </section>
+
+        <section data-state="blackout">
+          <h1>Questions?</h1>
+          <br>
+          <p>Contact me:</p>
+          <p><a href="https://drupal.org/user/411999">drupal.org/user/411999</a></p>
+          <p><a href="https://github.com/rupl">github.com/rupl</a></p>
+          <p><a href="http://twitter.com/rupl">twitter.com/rupl</a></p>
+          <p>chris &#x2740; fourkitchens.com</p>
+        </section>
+      </div>
+
+      <!-- The navigational controls UI -->
+      <aside class="controls">
+        <a class="left" href="#">&#x25C4;</a>
+        <a class="right" href="#">&#x25BA;</a>
+        <a class="up" href="#">&#x25B2;</a>
+        <a class="down" href="#">&#x25BC;</a>
+      </aside>
+
+      <!-- Displays presentation progress, max value changes via JS to reflect # of slides -->
+      <div class="progress"><span></span></div>
+
+    </div>
+
+    <!-- Optional libraries for code syntax highlighting and classList support in IE9 -->
+    <script src="lib/classList.js"></script>
+    <script src="lib/prism.js"></script>
+
+    <script src="js/reveal.js"></script>
+
+    <script>
+      // Parse the query string into a key/value object
+      var query = {};
+      location.search.replace( /[A-Z0-9]+?=(\w*)/gi, function(a) {
+        query[ a.split( '=' ).shift() ] = a.split( '=' ).pop();
+      } );
+
+      // Fires when a slide with data-state=customevent is activated
+      Reveal.addEventListener( 'customevent', function() {
+        alert( '"customevent" has fired' );
+      } );
+
+      // Fires each time a new slide is activated
+      Reveal.addEventListener( 'slidechanged', function( event ) {
+        // event.previousSlide, event.currentSlide, event.indexh, event.indexv
+      } );
+
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+        // Display a presentation progress bar
+        progress: true,
+        // If true; each slide will be pushed to the browser history
+        history: true,
+        // Loops the presentation, defaults to false
+        loop: false,
+        // Flags if mouse wheel navigation should be enabled
+        mouseWheel: true,
+        // Apply a 3D roll to links on hover
+        rollingLinks: true,
+        // UI style
+        theme: query.theme || 'default', // default/neon
+        // Transition style
+        transition: query.transition || 'linear' // default/cube/page/concave/linear(2d)
+      });
+    </script>
+  </body>
+</html>
