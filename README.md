@@ -1,7 +1,7 @@
 # Prerender: instant page loads
 
-A quick intro to prefetching and it's wild younger sister prerender.
+A quick intro to prefetching and its wild younger sister: prerender
 
 ## Presented at:
 
-* [BADCamp Mobile Summit 2013](https://2013.badcamp.net/)
+* [BADCamp Mobile Summit 2013](http://2013.badcamp.net/events/mobile-drupal-summit)
