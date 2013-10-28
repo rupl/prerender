@@ -86,14 +86,15 @@
 
         <section>
           <section>
-            <br>
             <h2>Prefetching</h2>
             <br>
-            <p class="fragment">Already codified into HTML5,<br> there is such a thing as <a href="http://www.w3.org/TR/html5/links.html#link-type-prefetch">DNS prefetching</a>.</p>
+            <p class="fragment">Already codified into HTML5,<br> there is such a thing as <a href="http://www.w3.org/TR/html5/links.html#link-type-prefetch">prefetching</a>.</p>
             <br>
-            <p class="fragment">Establish TCP connections ahead of time,<br> skipping the time-consuming DNS lookup.</p>
-            <br>
-            <pre class="fragment"><code class="language-markup">         &lt;link rel="dns-prefetch" href="//example.com"></code></pre>
+            <pre class="fragment"><code class="language-markup">    &lt;!-- DNS prefetch, establish a TCP connection -->
+    &lt;link rel="dns-prefetch" href="//example.com">
+
+    &lt;!-- Regular prefetch of an image -->
+    &lt;link rel="prefetch" href="//example.com/path/to/img.jpg"></code></pre>
           </section>
           <section>
             <br>
@@ -121,14 +122,17 @@
             <p class="fragment">You can also <em>request</em> prerenders with a very basic tag:</p>
             <br>
             <pre class="fragment"><code class="language-markup">      &lt;link rel="prerender" href="http://example.com/path"></code></pre>
+            <br>
+            <small class="fragment">(it also works when you insert the tag into the DOM with JS)</small>
           </section>
           <section>
-            <br>
             <h2>JavaScript API</h2>
             <br>
             <p class="fragment">There is a <a href="http://developer.mozilla.org/en-US/docs/Web/Guide/User_experience/Using_the_Page_Visibility_API">Page Visibility API</a> in JS.</p>
             <br>
-            <p class="fragment">Verify that the user is actually looking at a prerendered page before kicking off videos, logging analytics, etc.</p>
+            <p class="fragment">Verify that the user is actually looking at a prerendered page before logging analytics or other critical tasks.</p>
+            <br>
+            <p class="fragment">Videos are handled by the browser. Flash will not instantiate until the prerendered page is visible, and HTML5 video will actually stall a prerender.</p>
           </section>
           <section>
             <br>
@@ -154,10 +158,11 @@
             <h2>Further reading</h2>
             <br>
             <ul>
-              <li class="fragment"><a href="http://chimera.labs.oreilly.com/books/1230000000545/">High-Performance Browser Networking</a></li>
-              <li class="fragment"><a href="http://www.igvita.com/posa/high-performance-networking-in-google-chrome/">Preview chapter of HPBN</a>, all about predictors</li>
-              <li class="fragment"><a href="https://developers.google.com/speed/articles/prefetching">Google webmaster guidelines about prefetching</a> </li>
-              <li class="fragment"><a href="http://fourkitchens.com/blog/2013/03/20/prerender-chrome-instant-page-loads">Prerender in Chrome for instant page loads</a></li>
+              <li><a href="http://chimera.labs.oreilly.com/books/1230000000545/">High-Performance Browser Networking</a> - free ebook!</li>
+              <li><a href="http://www.igvita.com/posa/high-performance-networking-in-google-chrome/">Preview chapter of HPBN</a>, all about predictors</li>
+              <li><a href="https://developers.google.com/speed/articles/prefetching">Google developer guide to prefetching</a></li>
+              <li><a href="https://developers.google.com/chrome/whitepapers/prerender">Google developer guide to prerendering in Chrome</a></li>
+              <li><a href="http://fourkitchens.com/blog/2013/03/20/prerender-chrome-instant-page-loads">Prerender in Chrome for instant page loads</a></li>
             </ul>
           </section>
         </section>
